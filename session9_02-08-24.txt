@@ -1,0 +1,49 @@
+----------------------------------------------------------------------------------------------
+QUERY TO GET CURRENT DATE TIME IN MY SQL 	
+
+SELECT NOW(); (OR) SELECT CURENT_TIMESTAMP;
+----------------------------------------------------------------------------------------------
+QUERY TO GET CURRENT DATE IN MY SQL 
+
+SELECT CURRENT_DATE(); or SELECT date(NOW());
+----------------------------------------------------------------------------------------------
+QUERY TO GET CURRENT YEAR IN MY SQL 
+
+SELECT YEAR(CURDATE()); or SELECT year(NOW());
+----------------------------------------------------------------------------------------------
+QUERY TO GET CURRENT MONTH IN MY SQL 
+
+SELECT month(curdate()); or SELECT month(NOW());
+----------------------------------------------------------------------------------------------
+QUERY TO GET CURRENT DATE IN MY SQL 
+
+SELECT day(curdate()); or SELECT date(NOW());
+----------------------------------------------------------------------------------------------
+QUERY TO GET CURRENT HOUR IN MY SQL 
+
+SELECT HOUR(CURTIME()); or select hour(now());
+----------------------------------------------------------------------------------------------
+QUERY TO GET CURRENT MINUTE IN MY SQL 
+
+SELECT minute(NOW());
+----------------------------------------------------------------------------------------------
+QUERY TO GET CURRENT SECOND IN MY SQL 
+
+SELECT SECOND(NOW());
+----------------------------------------------------------------------------------------------
+QUERY TO GET STRING LENGTH IN MY SQL 
+
+SELECT LENGTH('') AS string_length;
+----------------------------------------------------------------------------------------------
+QUERY TO GET UPPER STRING  IN MY SQL 
+
+SELECT UPPER('') AS upper_string;
+----------------------------------------------------------------------------------------------
+QUERY TO GET LOWER STRING  IN MY SQL 
+
+SELECT LOWER('your_string') AS upper_string;
+----------------------------------------------------------------------------------------------
+QUERY TO GET STRING REVERSE IN MY SQL 
+
+SELECT REVERSE('your_string') AS upper_string;
+----------------------------------------------------------------------------------------------

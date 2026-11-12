@@ -1,0 +1,76 @@
+self join
+--------------
+a table refers itself
+
+use userdb;
+create table employeess(empid int, name varchar(30), salary int, managerid int);
+
+
+use userdb;
+insert into employeess values(1, 'aaa', 10000, 3);
+insert into employeess values(2, 'bbb', 20000, 3);
+insert into employeess values(3, 'ccc', 30000, 5);
+insert into employeess values(4, 'ddd', 40000, 6);
+insert into employeess values(5, 'eee', 50000, 6);
+insert into employeess values(6, 'fff', 60000, 7);
+
+
+
+empid, name, managername
+1     aaa     ccc
+
+
+e1.managerid=e2.empid
+
+
+
+query;
+----------------------------------
+use userdb;
+select e1.empid, e1.name, e2.name as 'manager name' from employeess e1 join employeess e2 on e1.managerid=e2.empid;
+
+cross join
+--------------------------------
+ every row from one table connected with all the rows of another table
+
+
+use userdb;
+create table computer ( cid int, cname varchar(30), cprice int);
+
+
+use userdb;
+insert into computer values ( 1, 'hp', 10000);
+insert into computer values ( 2, 'dell', 20000);
+insert into computer values ( 3, 'lenova', 30000);
+
+
+use userdb;
+create table addon( aid int, aname varchar(30), aprice int);
+
+use userdb;
+insert into addon values(1, 'headset',100);
+insert into addon values(2, 'mouse',200);
+insert into addon values(3, 'webcam',300);
+
+use userdb;
+select * from computer;
+select * from addon;
+
+query:
+use userdb;
+ select c.cname, a.aname, c.cprice+a.aprice as ' total price ' from addon a cross join computer c;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

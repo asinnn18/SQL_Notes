@@ -1,0 +1,87 @@
+use userdb;
+create table employeez(id int, name varchar(30), salary int);
+
+use userdb;
+insert into employeez values(1, 'aaa', 10000);
+insert into employeez values(2, 'bbb', 20000);
+insert into employeez values(3, 'ccc', 30000);
+insert into employeez values(4, 'ddd', 40000);
+
+
+use userdb;
+create table personal (id int, city varchar(30));
+
+
+use userdb;
+insert into personal values(1, 'chennai');
+insert into personal values(2, 'mumbai');
+insert into personal values(5, 'delhi');
+insert into personal values(6, 'calcutta');
+
+use userdb;
+select * from employeez;
+select * from personal;
+
+
+
+select id, name from employez;
+select id, city from personal;
+
+JOINS
+--------
+ it is the technique to fetch values form multiple tables
+
+inner join
+outer join
+  left outer join
+  right outer join
+  full outer join
+cross join
+equi join
+self join
+
+inner join
+-----------------------------
+  it will retrieve the values only for the matching records
+
+select emp.id, emp.name, per.city from employeez emp inner join personal per on emp.id=per.id;
+
+id    name    city
+1     aaa     chennai
+2     bbb     mumbai
+
+
+outer join
+-------------------------
+ it retrives the values for matching records. For non matching recpords it retrives the values only from left side table or right side table.
+
+select emp.id, emp.name, per.city from employeez emp left outer join personal per on emp.id=per.id;
+
+id    name    city
+1     aaa     chennai
+2     bbb     mumbai
+3     ccc      null
+4     ddd      null      
+
+select emp.id, emp.name, per.city from employeez emp right outer join personal per on emp.id=per.id;
+
+id    name    city
+1     aaa     chennai
+2     bbb     mumbai
+null null     bangalore
+null null     Calcutta
+
+full outer join : not supported in mysql
+
+id    name    city
+1     aaa     chennai
+2     bbb     mumbai
+3     ccc      null
+4     ddd      null
+null  null     bangalore
+null  null    calcutta
+
+
+
+
+

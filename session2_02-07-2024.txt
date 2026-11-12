@@ -1,0 +1,108 @@
+change the column title
+---------------------
+1. 
+use studentdb;
+select name as ' student name ' from student;
+
+logical operator
+
+and - must satisfy all the conditions
+---------------------
+use studentdb;
+select * from student where rollno=1 and  name='viswa';
+
+or - anyone condition must be satisfied
+---------------------
+use studentdb;
+select * from student where rollno=3 or  name='viswa';
+
+in operator
+---------------------
+use studentdb;
+select * from student where name in('viswa' , 'vishal');
+
+not in operator
+---------------------
+use studentdb;
+select * from student where name not in('viswa' , 'vishal');
+
+
+between operator
+---------------------
+use studentdb;
+select * from student where mark between 10 and 90;
+
+not between
+---------------------
+use studentdb;
+select * from student where mark not between 10 and 90;
+
+
+
+1. Show all employees hired between 2015 and 2020 at the same time they does not belong to testing team
+2. display the name list starts like 's---'
+3. display the employees name list having salry greater 25000
+4. find the maximum, minimum and average salary of the employee
+
+
+
+1.	use employeedb;
+	SELECT * from employee WHERE yoj BETWEEN 2015 and 2020;
+
+
+
+3.	use employeedb;
+	SELECT * from employee WHERE salary>25000;
+
+4.	use employeedb; 
+	SELECT * from employee WHERE salary<25000;
+	SELECT * from employee WHERE salary>25000;
+	SELECT * from employee WHERE salary=25000;
+
+
+
+
+
+empid name salary yearofjoining
+
+use employeedb;
+SELECT * from employee WHERE name LIKE's%';
+
+_ defines no of letter
+
+use employeedb;
+SELECT * from employee WHERE name LIKE's______h';
+
+use employeedb;
+-- aggregate functions it returns single value irrespective of the count of records
+
+SELECT max(salary) from employee;
+SELECT min(salary) from employee;
+SELECT avg(salary) from employee;
+SELECT sum(salary) from employee;
+SELECT count(salary) from employee;
+
+SELECT max(salary), min(salary), avg(salary), sum(salary), count(salary) from employee;
+
+
+
+ascending order
+-------------------
+use employeedb;
+select name, salary from employee order by salary;
+
+
+use employeedb;
+select name, salary from employee order by salary asc;
+
+use employeedb;
+select name, salary from employee order by salary desc;
+use employeedb;
+select name, salary from employee order by name asc, salary desc;
+
+
+
+
+
+
+

@@ -1,0 +1,162 @@
+check constraints
+--------------------------
+  it is used to ensure the range of values or patterns
+
+
+
+create database productdb;
+
+use productdb;
+create table product(id int, name varchar(30), price int, constraint ck check (price between 50 and 500) );
+
+use productdb;
+insert into product values(1, 'aaa', 450); no error
+
+use productdb;
+insert into product values(2, 'bbb', 60); no error
+
+use productdb;
+insert into product values(3, 'ccc', 600); error
+
+use productdb;
+insert into product values(3, 'ccc', 6); error
+
+
+default constraint
+--------------------------
+ it replaces the null values by its default value
+
+use productdb;
+create table product2(id int, name varchar(30), price int default(50));
+
+use productdb;
+insert into product2 values(1, 'aaa', 1000);
+
+use productdb;
+insert into product2(id, name) values(2, 'bbb');
+
+
+
+use productdb;
+select * from product2;
+
+
+
+not null constraint
+----------------------------
+ does not allow null values
+
+
+use productdb;
+insert into product3(name) values ('aaa');
+
+group by 
+------------------
+ it is used to group the records based on a columns
+
+
+
+
+use employeedb;
+create table newemployees(empid int, name varchar(30), salary int, dept varchar(30));
+
+
+use employeedb;
+insert into newemployees values(1, 'aaa', 10000, 'testing');
+insert into newemployees values(2, 'bbb', 20000, 'development');
+insert into newemployees values(3, 'ccc', 30000, 'support');
+insert into newemployees values(4, 'ddd', 40000, 'testing');
+insert into newemployees values(5, 'eee', 50000, 'development');
+insert into newemployees values(6, 'fff', 60000, 'development');
+
+use employeedb;
+select sum(salary), dept from newemployees group by dept;
+
+note: use aggregate function while using group by function. u can also use the field what is used for the group by function
+
+
+note:
+ use 'having' keyword instead of 'where' to filter the records while using group by function
+
+use employeedb;
+select sum(salary), dept from newemployees group by dept having sum(salary) >=40000;
+
+------------------------------------------------------------------------------------------------------------------------------------------
+use studentdb;
+create table student (zid int, name varchar(30), mark int, constraint ck check ( zid between 1 and 99) );
+
+use studentdb;
+create table test(zid varchar(10), name varchar(20), constraint ck12 check ( zid='z001')  );
+
+use studentdb;
+insert into test values('z001', 'aaa');
+
+use studentdb;
+insert into test values('z002', 'aaaa');
+
+
+
+use studentdb;
+create table test2(zid varchar(10), name varchar(20), constraint ck22 check ( zid like 'z___')  );
+
+
+ALTER TABLE test2 add CONSTRAINT pk4 PRIMARY KEY(zid);
+
+
+use studentdb;
+insert into test2 values('z001', 'abc');
+
+
+use studentdb;
+insert into test2 values('z00123', 'abc');
+
+practical :
+----------------
+
+use employeedb;
+CREATE TABLE employee(empid int,name varchar(30),salary int,prjctid varchar(30), CONSTRAINT pk PRIMARY KEY(empid));
+
+use employeedb;
+INSERT into employee VALUES(1,'hari',25000,'prjct123');
+INSERT into employee VALUES(2,'kalai',28000,'prjct456');
+INSERT into employee VALUES(3,'vinoth',20000,'prjct789');
+
+
+use employeedb;
+CREATE table works(pid varchar(30),shell varchar(10),description varchar(300),CONSTRAINT fk FOREIGN KEY(pid) REFERENCES employee(prjctid),CONSTRAINT pk2 PRIMARY KEY(pid));
+
+INSERT into works VALUES('prjct789','completed','project over'); ---valid code----
+INSERT into works VALUES('prjct452','completed','project over');--- in valid code---
+------------------------------------------------------------------------------------------
+
+
+use employeedb;
+CREATE TABLE employee(empid int,name varchar(30),salary int,prjctid varchar(30), CONSTRAINT pk PRIMARY KEY(empid), constraint fk2 foreign key (prjctid) references works(pid) );
+
+use employeedb;
+INSERT into employee VALUES(1,'hari',25000,'prjct123');
+INSERT into employee VALUES(2,'kalai',28000,'prjct456');
+INSERT into employee VALUES(3,'vinoth',20000,'prjct789');
+
+
+use employeedb;
+CREATE table works(pid varchar(30),shell varchar(10),description varchar(300),CONSTRAINT pk2 PRIMARY KEY(pid));
+
+INSERT into works VALUES('prjct789','completed','project over'); ---valid code----
+INSERT into works VALUES('prjct452','completed','project over');--- in valid code---
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

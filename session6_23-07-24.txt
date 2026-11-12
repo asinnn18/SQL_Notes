@@ -1,0 +1,57 @@
+view 
+----------------------------------------------------------------------------------------------
+view is a subset of table.it doesn't have its own data,its represented as a window for the table.
+
+
+query :
+-----------
+use userdb;
+CREATE OR REPLACE VIEW myview1 AS SELECT name,mark,PASSWORD FROM userdetails;
+
+use userdb;
+-- to SELECT from VIEW 
+SELECT * from myview1;
+
+
+inserting data to view :
+----------------------------------
+
+use userdb;
+INSERT INTO myview1 VALUES('kavi','99%','kavi@123');
+
+
+use userdb;
+SELECT * from userdetails;
+
+use userdb;
+DELETE from myview1 where name='kavi';
+
+
+altering the view ;
+-------------------------
+use userdb;
+CREATE OR REPLACE VIEW myview1 AS SELECT name,mark FROM userdetails;
+
+
+use userdb;
+SELECT * from myview1;
+
+
+
+droping the view :
+-----------------------
+
+use userdb;
+DROP VIEW myview1 ;
+
+use userdb;
+SELECT * FROM myview1;
+
+MySQL said: 
+
+#1146 - Table 'userdb.myview1' doesn't exist
+
+
+
+note: view doesn't support delete or update or multiple base table at sametime
+----------------------------------------------------------------------------------------------

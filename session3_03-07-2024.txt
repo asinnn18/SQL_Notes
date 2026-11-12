@@ -1,0 +1,151 @@
+sql-mode="STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"
+
+SET GLOBAL sql_mode='STRICT_TRANS_TABLES';
+
+[mysqld] sql_mode="STRICT_TRANS_TABLES"
+
+data integrity
+-------------------
+ it is the process of ensure the accuracy and correctness of data
+
+constraints used to implements data integrity
+
+primary key - no duplicates
+unique - same as primary key but slightly differ from it
+foreign key - referential integrity
+check - pattern and range
+default - no null constraints
+
+
+primary key
+---------------------------
+1. it does not allow duplicate values
+2. it does not allow null values
+3. only one primary key is supported per table
+
+
+creating primary key
+----------------------------
+use employeedb;
+create table myemployees( empid int, name varchar(30), salary int, constraint pk primary key(empid));
+
+use employeedb;
+create table myemployees( empid int, name varchar(30), salary int, constraint pk primary key(empid));
+
+
+use employeedb;
+create table myemployees( empid int primary key, name varchar(30), salary int);
+
+
+
+--------------------------------------------------------------------------------
+
+practice
+----------------
+
+use employeedb;
+create table myemployees( empid int, name varchar(30), salary int);
+
+
+
+use employeedb;
+insert into myemployees values(1, 'aaa', 10000);
+
+
+use employeedb;
+insert into myemployees values(2, 'bbb', 20000);
+
+use employeedb;
+insert into myemployees values(1, 'ccc', 30000); - invalid record bcoz of duplicate id
+
+
+use employeedb;
+select * from myemployees; 
+
+
+
+use employeedb;
+drop table myemployees;
+
+
+use employeedb;
+insert into myemployees(name, salary) values( 'ccc', 30000);
+
+out.println(ex.getMessage());
+
+
+use employeedb;
+alter table myemployees2 drop column name;
+
+
+use employeedb;
+alter table myemployees2 add column name varchar(30);
+
+
+
+----------------------------------------------------------------------------------
+
+unique key
+------------------
+1. same as primary key. it does not allow duplicate values
+2. multiple unique keys are supported per table
+3. only one null value is allowed [ MySQL multiple null values are allowed ]
+
+
+creating unique key
+--------------------------
+use employeedb;
+create table myemployees2( empid int, name varchar(30), salary int, constraint uk unique key(empid));
+
+
+drop constraints
+----------------------
+use employeedb;
+alter table myemployees drop constraint pk;
+
+
+use employeedb;
+alter table myemployees2 drop constraint uk;
+
+foreign key
+--------------------
+ it always refers the primary key value of an another table.
+ it allows duplicate values
+ multiple foreign keys per table is allowed
+
+creating foreign key
+-------------------------
+use employeedb;
+create table task(empid int, taskname varchar(30), description varchar(100), constraint fk foreign key(empid) references myemployees(empid));
+
+use employeedb;
+insert into task values(1, 'task1', 'devel pjt 1'); - valid code
+
+
+
+use employeedb;
+insert into task values(100, 'task100','testing pjt 1');  -- error code
+
+
+use employeedb;
+insert into task values(1, 'task10','testing pjt 1'); -- valid code
+ -- foreign key allows duplicate values
+
+practice 
+-------------
+table with primary key and unique key;
+
+use employeedb;
+create TABLE employee1(empid int,name varchar(30),mobno varchar(12),salary int, CONSTRAINT pk PRIMARY KEY(empid),CONSTRAINT uk UNIQUE KEY(mobno));
+
+INSERT INTO employee1 value(1,'bharath','8098110834',20000);
+INSERT INTO employee1 value(2,'bala','8098156584',20000);
+INSERT INTO employee1 value(3,'kalai','2345678904',20000);
+
+table with foreign key;
+
+use employeedb;
+create table task2(empid int, taskname varchar(30), description varchar(100), constraint fk2 foreign key(empid) references employee1(empid));
+
+
+

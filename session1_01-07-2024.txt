@@ -1,0 +1,57 @@
+sql(structured query language)
+it is a technology used to process that large number of data
+database:its collection tables 
+table: collection of records
+record : collection of field
+to work on the database.we need xampp software .
+to search xampp software and download and install it.
+open the xampp in admin mode(right click xampp . select > run as administration)
+start the apache and my sql services
+now click the my sql admin option.it will open the phpMyAdmin  page
+now click the sql tab.type the following queries and excute querys
+
+query1 : CREATE database studentdb;
+        click and go
+
+query2 : use studentdb;
+         create TABLE student(rollno int,name varchar(30),mark int);
+query3 : use studentdb;
+	INSERT into student value (1,'vijay',78);
+	INSERT into student value (2,'kumar',88);
+	INSERT into student value (3,'vishal',68);
+	INSERT into student value (4,'madan',78);
+query4 :use studentdb;
+	SELECT * from student;
+
+query5 :use studentdb;
+	UPDATE student set name='viswa',mark=100 WHERE rollno=1;
+
+query6: use studentdb;
+	delete from student where rollno=2 ;
+
+query7 :use studentdb;
+	insert INTO student(rollno,name) VALUES(6,'viji');
+
+query 8 :--inserting values to SPECIFIC COLUMNS--
+
+query 9 :use studentdb;
+	-- getting values for specific columns
+	SELECT rollno,name FROM student;
+query 10:use studentdb;
+	-- getting values for specific record
+	SELECT * FROM student WHERE rollno=1;
+
+query 11:use studentdb;
+	-- getting values for specific record
+	SELECT * FROM student WHERE name='viji';
+
+use that keyword "is" instead of "=" for NULL values 
+
+query 12:use studentdb;
+	-- getting values for specific record
+	SELECT * FROM student WHERE MARK IS NULL;
+query 13:use studentdb;
+	-- getting values for specific record
+	SELECT * FROM student WHERE MARK IS NOT NULL;
+
+

@@ -1,0 +1,115 @@
+check constraints
+--------------------------
+  it is used to ensure the range of values or patterns
+
+
+
+create database productdb;
+
+use productdb;
+create table product(id int, name varchar(30), price int, constraint ck check (price between 50 and 500) );
+
+use productdb;
+insert into product values(1, 'aaa', 450); no error
+
+use productdb;
+insert into product values(2, 'bbb', 60); no error
+
+use productdb;
+insert into product values(3, 'ccc', 600); error
+
+use productdb;
+insert into product values(3, 'ccc', 6); error
+
+
+default constraint
+--------------------------
+ it replaces the null values by its default value
+
+use productdb;
+create table product2(id int, name varchar(30), price int default(50));
+
+use productdb;
+insert into product2 values(1, 'aaa', 1000);
+
+use productdb;
+insert into product2(id, name) values(2, 'bbb');
+
+
+
+use productdb;
+select * from product2;
+
+
+
+not null constraint
+----------------------------
+ does not allow null values
+
+
+use productdb;
+insert into product3(name) values ('aaa');
+
+group by 
+------------------
+ it is used to group the records based on a columns
+
+
+
+
+use employeedb;
+create table newemployees(empid int, name varchar(30), salary int, dept varchar(30));
+
+
+use employeedb;
+insert into newemployees values(1, 'aaa', 10000, 'testing');
+insert into newemployees values(2, 'bbb', 20000, 'development');
+insert into newemployees values(3, 'ccc', 30000, 'support');
+insert into newemployees values(4, 'ddd', 40000, 'testing');
+insert into newemployees values(5, 'eee', 50000, 'development');
+insert into newemployees values(6, 'fff', 60000, 'development');
+
+use employeedb;
+select sum(salary), dept from newemployees group by dept;
+
+note: use aggregate function while using group by function. u can also use the field what is used for the group by function
+
+
+note:
+ use 'having' keyword instead of 'where' to filter the records while using group by function
+
+use employeedb;
+select sum(salary), dept from newemployees group by dept having sum(salary) >=40000;
+
+use employeedb;
+select sum(salary),dept from newemployees where salary>10000 group by dept having sum(salary)>10000;
+
+
+exercise :
+------------
+default cnstrt ;
+
+use studentdb;
+CREATE TABLE student(id int,name varchar(30),class varchar(15),mark int,CONSTRAINT ck check(mark BETWEEN 45 and 100));
+use studentdb;
+insert INTO student values(1,'kavi','12',75);  -----valid code-----
+insert INTO student values(2,'kalai','12',65); -----valid code-----
+insert INTO student values(3,'surya','12',79); -----valid code-----
+insert INTO student values(4,'pavi','12',76); -----valid code-----
+
+
+insert INTO student values(5,'sumi','12',7); ----- error code-----(bcoz range of the mark is low)
+
+
+
+
+use studentdb;
+create table attendance(id varchar,name varchar(30),present varchar(10),CONSTRAINT ck CHECK(id like 'emp___') ); 
+
+
+
+
+
+
+
+
